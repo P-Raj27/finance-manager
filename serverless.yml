@@ -1,0 +1,17 @@
+service: finance-manager
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  ${file(./src/handlers/crud_operations/functions.yml)}
+
+resources:
+  Resources:
+    #DynamoDB Table
+    ${file(./src/resources/dynamoDb.yml)}
+    
+          
+        

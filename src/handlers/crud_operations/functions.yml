@@ -1,0 +1,28 @@
+create:
+  handler: src/handlers/crud_operations/create.handler
+  events:
+    - http:
+        path: create
+        method: post
+        cors: true
+read:
+  handler: src/handlers/crud_operations/read.handler
+  events:
+    - http:
+        path: read
+        method: get
+        cors: true
+update:
+  handler: src/handlers/crud_operations/update.handler
+  events:
+    - http:
+        path: update
+        method: put
+        cors: true
+delete:
+  handler: src/handlers/crud_operations/delete.handler
+  events:
+    - http:
+        path: delete
+        method: delete
+        cors: true  
