@@ -20,6 +20,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+      - name: Intall Serverless
+        run: npm install serverless@3 -g
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
