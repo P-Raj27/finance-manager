@@ -21,7 +21,9 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Intall Serverless
-        run: npm install serverless@3 -g
+        run: |
+            echo "Installing Serverless Framework"
+            npm install serverless@3 -g
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -31,4 +33,6 @@ jobs:
           aws-region: us-east-1 # update to your region
 
       - name: Deploy using Serverless
-        run: npx serverless deploy
+        run: |
+            echo "Yay! All dependencies installed, its time to deploy the stack to AWS"
+            serverless deploy --verbose
