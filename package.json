@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/P-Raj27/finance-manager/issues"
   },
-  "homepage": "https://github.com/P-Raj27/finance-manager#readme"
+  "homepage": "https://github.com/P-Raj27/finance-manager#readme",
+  "devDependencies": {
+    "@aws-sdk/client-dynamodb": "^3.777.0",
+    "@aws-sdk/lib-dynamodb": "^3.778.0",
+    "@types/node": "^22.13.14",
+    "i": "^0.3.7",
+    "npm": "^11.2.0",
+    "serverless-esbuild": "^1.55.0",
+    "zod": "^3.24.2"
+  }
 }

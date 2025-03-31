@@ -1,5 +1,5 @@
 create:
-  handler: src/handlers/crud_operations/create.handler
+  handler: src/handlers/crud_operations/create.create
   events:
     - http:
         path: create
@@ -10,7 +10,7 @@ read:
   events:
     - http:
         path: read
-        method: get
+        method: post
         cors: true
 update:
   handler: src/handlers/crud_operations/update.handler

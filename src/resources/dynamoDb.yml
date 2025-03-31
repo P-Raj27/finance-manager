@@ -1,7 +1,7 @@
 DynamoDBTable:
   Type: AWS::DynamoDB::Table
   Properties:
-    TableName: finance-manager-data
+    TableName: ${self:service}-${self:provider.stage}-finance-records
     AttributeDefinitions:
       - AttributeName: pk
         AttributeType: S
