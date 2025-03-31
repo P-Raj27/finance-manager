@@ -1,4 +1,3 @@
-import { ok } from "assert";
 import { getItem } from "../../utils/aws/services/DDBDocumentClient_Services";
 import { getConfig, replaceSpacesWithUnderscores, validateInput } from "../../utils/helpers";
 import { badRequest, okResponse } from "../../utils/response";

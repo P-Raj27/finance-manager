@@ -4,7 +4,7 @@ import { getConfig, transformData, validateInput } from "../../utils/helpers";
 import { badRequest, okResponse } from "../../utils/response";
 import { investmentRecordsSchema } from "./libs/zodSchemas";
 
-export const create = async (event: any) => {
+export const handler = async (event: any) => {
 
     try {
 

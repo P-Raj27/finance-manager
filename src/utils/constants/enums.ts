@@ -5,8 +5,8 @@ export enum RecordType {
 };
 
 export enum InvestmentType {
-    MUTUAL_FUND = "MUTUAL_FUND",
-    BANKING = "BANKING",
-    FIXED_DEPOSIT = "FIXED_DEPOSIT",
-    TAX_SAVER = "TAX_SAVER",
+    MUTUAL_FUND = "Mutual_Fund",
+    BANKING = "Banking",
+    FIXED_DEPOSIT = "Fixed_Deposit",
+    TAX_SAVER = "Tax_Saver",
 };

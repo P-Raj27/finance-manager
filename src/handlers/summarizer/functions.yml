@@ -1,0 +1,3 @@
+handler: src/handlers/summarizer/summarizer.handler
+events:
+  - schedule: cron(0 0 5 * ? *)

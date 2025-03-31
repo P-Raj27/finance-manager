@@ -1,5 +1,5 @@
 create:
-  handler: src/handlers/crud_operations/create.create
+  handler: src/handlers/crud_operations/create.handler
   events:
     - http:
         path: create

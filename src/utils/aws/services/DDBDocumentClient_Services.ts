@@ -9,6 +9,9 @@ import {
   PutCommand,
   PutCommandInput,
   PutCommandOutput,
+  QueryCommand,
+  QueryCommandInput,
+  QueryCommandOutput,
   UpdateCommand,
   UpdateCommandInput,
   UpdateCommandOutput,
@@ -44,5 +47,9 @@ export const putItem = async (params: PutCommandInput): Promise<PutCommandOutput
   return ddbDocClient.send(getCommandParams);
 };
 
+export const queryItem = async (params: QueryCommandInput): Promise<QueryCommandOutput> => {
+  const command = new QueryCommand(params);
+  return ddbDocClient.send(command);
+};
 
 

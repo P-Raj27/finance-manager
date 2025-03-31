@@ -15,6 +15,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
+        - dynamodb:Query
       Resource:
         - arn:aws:dynamodb:${self:provider.region}:${aws:accountId}:table/${self:service}-${self:provider.stage}-finance-records
 
@@ -32,7 +33,11 @@ custom:
     concurrency: 10
 
 functions:
-  ${file(./src/handlers/crud_operations/functions.yml)}
+  create: ${file(./src/handlers/crud_operations/functions.yml):create}
+  read: ${file(./src/handlers/crud_operations/functions.yml):read}
+  update: ${file(./src/handlers/crud_operations/functions.yml):update}
+  delete: ${file(./src/handlers/crud_operations/functions.yml):delete}
+  summarizer: ${file(./src/handlers/summarizer/functions.yml)}
 
 resources:
   Resources:
