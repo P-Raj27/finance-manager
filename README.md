@@ -115,8 +115,16 @@ Content-Type: application/json
   sk: string;           // Sort key (format: investmentType#investmentName)
   investmentAmount: number;
   returnsAmount: number;
+  investmentType: string;
   totalProfit: number;
   isProfit: boolean;
+  appName: string;
+  email: string;
+  isRecurring: boolean;
+  maturityDate: string;
+  recurringAmount: number;
+  totalProfit: number;
+
 }
 ```
 
