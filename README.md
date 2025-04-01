@@ -24,6 +24,66 @@ Finance Manager is a serverless application built on AWS Lambda that provides co
   - Investment-wise returns tracking
   - Total portfolio value computation
 
+## API Examples
+This section provides examples of API calls for the Finance Manager application.
+
+### 1. Create Investment Record
+```http
+POST /create
+Content-Type: application/json
+
+{
+  "isRecurring": true,
+  "recurringAmount": 5000,
+  "investmentType": "Mutual_Fund",
+  "investmentName": "SBI Bluechip Fund",
+  "investmentAmount": 980000,
+  "returnsAmount": 630000,
+  "appName": "Groww",
+  "email": "investor@example.com",
+  "maturityDate": "2026-12-31"
+}
+```
+
+### 2. Read Investment Record
+```http
+POST /read
+Content-Type: application/json
+
+{
+  "email": "investor@example.com",
+  "investmentType": "Mutual_Fund",
+  "investmentName": "SBI Bluechip Fund"
+}
+```
+
+### 3. Update Investment Record
+```http
+PUT /update
+Content-Type: application/json
+
+{
+  "email": "investor@example.com",
+  "investmentType": "Mutual_Fund",
+  "investmentName": "Axis Bluechip Fund",
+  "returnsAmount": 32000,
+  "investmentAmount": 45000
+}
+```
+
+### 4. Delete Investment Record
+```http
+DELETE /delete
+Content-Type: application/json
+
+{
+  "email": "investor@example.com",
+  "investmentType": "Mutual_Fund",
+  "investmentName": "SBI Bluechip Fund"
+}
+```
+
+
 ## Technical Architecture
 
 ### Core Components
