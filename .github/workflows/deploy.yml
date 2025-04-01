@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+      - staging
+      - prod
 
 jobs:
   deploy:
@@ -16,23 +18,29 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18' # or your Node version
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
-      - name: Intall Serverless
+
+      - name: Install Serverless
         run: |
-            echo "Installing Serverless Framework"
-            npm install serverless@3 -g
+          echo "Installing Serverless Framework"
+          npm install serverless@3 -g
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1 # update to your region
+          aws-region: us-east-1
 
       - name: Deploy using Serverless
         run: |
-            echo "Yay! All dependencies installed, its time to deploy the stack to AWS"
-            serverless deploy --verbose
+          BRANCH=${{ github.ref_name }}
+          STAGE="dev"
+          if [ "$BRANCH" = "staging" ]; then STAGE="staging"; fi
+          if [ "$BRANCH" = "prod" ]; then STAGE="prod"; fi
+
+          echo "Deploying to $STAGE environment"
+          serverless deploy --stage $STAGE --verbose
