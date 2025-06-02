@@ -15,6 +15,7 @@ export const investmentRecordsSchema = z.object({
 
 export const investmentRecordsFetchSchema = z.object({
     email: z.string(),
-    investmentType: z.nativeEnum(InvestmentType),
-    investmentName: z.string(),
+    investmentType: z.nativeEnum(InvestmentType).optional(),
+    investmentName: z.string().optional(),
+    type: z.string()
 });

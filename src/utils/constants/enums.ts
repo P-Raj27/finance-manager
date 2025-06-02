@@ -10,3 +10,5 @@ export enum InvestmentType {
     FIXED_DEPOSIT = "Fixed_Deposit",
     TAX_SAVER = "Tax_Saver",
 };
+
+export const investment_types = ["Mutual Funds(SIP)", "Mutual Funds(LumSum)","Crypto Currency","Banking(Savings)","Banking(FD)","Banking(RD)","ESOP","Tax Saver(ELSS)"]

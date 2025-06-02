@@ -17,7 +17,7 @@ provider:
         - dynamodb:DeleteItem
         - dynamodb:Query
       Resource:
-        - arn:aws:dynamodb:${self:provider.region}:${aws:accountId}:table/${self:service}-${self:provider.stage}-finance-records
+        - arn:aws:dynamodb:${self:provider.region}:599942835003:table/${self:service}-${self:provider.stage}-finance-records
 
 plugins:
   - serverless-esbuild
