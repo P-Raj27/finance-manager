@@ -5,7 +5,7 @@ from typing import Literal
 import requests
 
 
-url = "https://dk9kf4326l.execute-api.us-east-1.amazonaws.com/dev/"
+url = os.getenv("API_URL")
 
 apis = {
     "create_records": url + "create",
