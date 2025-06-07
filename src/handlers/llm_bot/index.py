@@ -98,6 +98,10 @@ def chat_with_bot(user_query,email):
     
     '''
 
+    os.environ["AWS_ACCESS_KEY_ID"] = os.getenv("AI_ACCESS_KEY_ID")
+    os.environ["AWS_SECRET_ACCESS_KEY"] = os.getenv("AI_SECRET_ACCESS_KEY")
+    os.environ["AWS_REGION"] = os.getenv("AWS_REGION")
+
     total_investment_record_summary = dspy.Tool(
     func=lambda: (get_total_investment_record(email=email)),
     desc="This tool will fetch the summary of all Investments details at once,Call this when user is asking for profit or loss",
