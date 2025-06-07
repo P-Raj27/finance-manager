@@ -12,4 +12,3 @@ environment:
   API_KEY: ${self:provider.environment.API_KEY}
   AI_ACCESS_KEY_ID: ${self:provider.environment.AI_ACCESS_KEY_ID}
   AI_SECRET_ACCESS_KEY: ${self:provider.environment.AI_SECRET_ACCESS_KEY}
-  AWS_REGION: ${self:provider.region}

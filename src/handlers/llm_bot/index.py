@@ -100,7 +100,7 @@ def chat_with_bot(user_query,email):
 
     os.environ["AWS_ACCESS_KEY_ID"] = os.getenv("AI_ACCESS_KEY_ID")
     os.environ["AWS_SECRET_ACCESS_KEY"] = os.getenv("AI_SECRET_ACCESS_KEY")
-    os.environ["AWS_REGION"] = os.getenv("AWS_REGION")
+    os.environ["AWS_REGION"] = os.getenv("AI_AWS_REGION")
 
     total_investment_record_summary = dspy.Tool(
     func=lambda: (get_total_investment_record(email=email)),
