@@ -10,6 +10,6 @@ events:
 environment:
   API_URL: https://dk9kf4326l.execute-api.us-east-1.amazonaws.com/dev/
   API_KEY: ${env:API_KEY}
-  AWS_ACCESS_KEY_ID: ${env:AWS_ACCESS_KEY_ID}
-  AWS_SECRET_ACCESS_KEY: ${env:AWS_SECRET_ACCESS_KEY}
+  AWS_ACCESS_KEY_ID: ${env:AI_ACCESS_KEY_ID}
+  AWS_SECRET_ACCESS_KEY: ${env:AI_SECRET_ACCESS_KEY}
   AWS_REGION: ${self:provider.region}
