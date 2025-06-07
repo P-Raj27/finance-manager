@@ -5,4 +5,5 @@ events:
       path: sync
       method: post
       cors: true
+      private: true
 

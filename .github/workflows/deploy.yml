@@ -1,40 +1,47 @@
-name: Deploy to AWS
+name: Deploy Serverless Application
 
 on:
   push:
     branches:
       - main
-      - staging
-      - prod
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
 jobs:
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+    strategy:
+      matrix:
+        node-version: [18.x]
 
-      - name: Setup Node.js
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
-      - name: Install dependencies
-        run: npm install
-      - name: Install Serverless
-        run: |
-          echo "Installing Serverless Framework"
-          npm install serverless@3 -g
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-      - name: Deploy using Serverless
-        run: |
-          BRANCH=${{ github.ref_name }}
-          STAGE="dev"
-          if [ "$BRANCH" = "staging" ]; then STAGE="staging"; fi
-          if [ "$BRANCH" = "prod" ]; then STAGE="prod"; fi
+          node-version: ${{ matrix.node-version }}
 
-          echo "Deploying to $STAGE environment"
-          serverless deploy --stage $STAGE --verbose
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Install Serverless Framework
+        run: npm install -g serverless
+
+      - name: Deploy to AWS
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AI_ACCESS_KEY_ID: ${{ secrets.AI_ACCESS_KEY_ID }}
+          AI_SECRET_ACCESS_KEY: ${{ secrets.AI_SECRET_ACCESS_KEY }}
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            serverless deploy --stage prod
+          else
+            serverless deploy --stage dev
+          fi

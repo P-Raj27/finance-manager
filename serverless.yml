@@ -6,8 +6,23 @@ provider:
   runtime: nodejs18.x
   region: us-east-1
   stage: ${opt:stage, 'dev'}
+  apiGateway:
+    apiKeys:
+      - name: ${self:service}-${self:provider.stage}-key
+        description: API key for ${self:service} ${self:provider.stage} stage
+    usagePlan:
+      quota:
+        limit: 5000
+        offset: 0
+        period: MONTH
+      throttle:
+        burstLimit: 200
+        rateLimit: 100
   environment:
     DYNAMODB_TABLE_NAME: ${self:service}-${self:provider.stage}-finance-records
+    AI_ACCESS_KEY_ID: ${env:AI_ACCESS_KEY_ID, ''}
+    AI_SECRET_ACCESS_KEY: ${env:AI_SECRET_ACCESS_KEY, ''}
+    API_KEY: ${env:API_KEY, ''}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -33,11 +48,18 @@ custom:
     concurrency: 10
 
 functions:
-  create: ${file(./src/handlers/crud_operations/functions.yml):create}
-  read: ${file(./src/handlers/crud_operations/functions.yml):read}
-  update: ${file(./src/handlers/crud_operations/functions.yml):update}
-  delete: ${file(./src/handlers/crud_operations/functions.yml):delete}
-  summarizer: ${file(./src/handlers/summarizer/functions.yml)}
+  create: 
+    ${file(./src/handlers/crud_operations/functions.yml):create}
+  read: 
+    ${file(./src/handlers/crud_operations/functions.yml):read}
+  update: 
+    ${file(./src/handlers/crud_operations/functions.yml):update}
+  delete: 
+    ${file(./src/handlers/crud_operations/functions.yml):delete}
+  summarizer: 
+    ${file(./src/handlers/summarizer/functions.yml)}
+  llm_bot: 
+    ${file(./src/handlers/llm_bot/functions.yml)}
 
 resources:
   Resources:

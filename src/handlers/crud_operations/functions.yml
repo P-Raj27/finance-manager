@@ -5,6 +5,8 @@ create:
         path: create
         method: post
         cors: true
+        private: true
+
 read:
   handler: src/handlers/crud_operations/read.handler
   events:
@@ -12,6 +14,7 @@ read:
         path: read
         method: post
         cors: true
+        private: true
 update:
   handler: src/handlers/crud_operations/update.handler
   events:
@@ -19,10 +22,13 @@ update:
         path: update
         method: put
         cors: true
+        private: true
+
 delete:
   handler: src/handlers/crud_operations/delete.handler
   events:
     - http:
         path: delete
         method: delete
-        cors: true  
+        cors: true
+        private: true
