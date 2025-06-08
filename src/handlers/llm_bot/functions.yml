@@ -1,4 +1,4 @@
-handler: src.handler.llm_bot.index.handler
+handler: src.handlers.llm_bot.index.handler
 runtime: python3.11
 events:
   - http:
